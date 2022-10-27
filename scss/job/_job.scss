@@ -1,0 +1,100 @@
+@use "../variables/" as *;
+@use "../mixins/" as *;
+@use "../utilities/" as *;
+
+.job-container {
+  background: $secondary-bg;
+  padding: 48px;
+
+  @include mobile {
+    padding: 32px;
+  }
+
+  h2 {
+    @extend %section-title;
+  }
+
+  .jobs-list {
+    display: flex;
+    padding: 16px 0;
+
+    @include mobile {
+      flex-direction: column;
+    }
+
+    .first-job {
+      width: 30%;
+      height: 415px;
+      margin: 0 25px;
+      position: relative;
+      cursor: pointer;
+      transition: 0.5s;
+      background-image: url("../img/job1.jpg");
+      @extend %center-bg;
+      @extend %card-hover;
+
+      @include mobile {
+        @include card-mobile;
+      }
+    }
+  }
+
+  .other-jobs-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 68%;
+
+    @include mobile {
+      width: 100%;
+      flex-direction: column;
+    }
+
+    .job-card {
+      width: 46%;
+      height: 200px;
+      position: relative;
+      cursor: pointer;
+      margin-bottom: 15px;
+      margin-right: 15px;
+      @extend %center-bg;
+      @extend %card-hover;
+
+      @include mobile {
+        @include card-mobile;
+      }
+    }
+
+    @each $job in $jobs {
+      ##{$job} {
+        background-image: url("../img/#{$job}.jpg");
+      }
+    }
+  }
+
+  .job-card-cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding-top: 28px;
+    background: rgba(0, 0, 0, 0.6);
+    border: 3px solid $primary-color;
+    color: pink;
+
+    .job-card-title {
+      text-align: center;
+      color: $light-color;
+      font-size: 2.2rem;
+      font-weight: bold;
+      transition: 0.5s;
+    }
+
+    .job-card-description {
+      text-align: center;
+      color: $light-color;
+      font-size: 0.9rem;
+      padding: 1rem;
+    }
+  }
+}

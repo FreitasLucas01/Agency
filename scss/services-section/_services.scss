@@ -1,0 +1,59 @@
+@use "../variables/" as *;
+@use "../mixins/" as *;
+@use "../utilities/" as *;
+
+.services-container {
+  text-align: center;
+  padding: 32px;
+  margin-bottom: 32px;
+
+  h2 {
+    @extend %section-title;
+  }
+
+  .services-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 32px;
+
+    @include mobile {
+      padding: 32px 0;
+    }
+
+    .services-card {
+      width: 30%;
+      margin: 16px;
+      padding: 32px;
+      border: 1px solid $egg-color;
+      transition: 0.3s;
+
+      @include mobile {
+        width: 100%;
+        margin-bottom: 32px;
+      }
+
+      i {
+        color: $primary-color;
+        font-size: 4rem;
+        display: block;
+        margin-top: 16px;
+        margin-bottom: 24px;
+      }
+
+      h3 {
+        font-size: 1.5rem;
+        margin-bottom: 16px;
+      }
+
+      p {
+        color: $text-color;
+      }
+
+      &:hover {
+        border: transparent;
+        box-shadow: 0 1px 10px $egg-color;
+      }
+    }
+  }
+}

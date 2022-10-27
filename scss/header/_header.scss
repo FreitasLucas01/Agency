@@ -1,0 +1,92 @@
+@use "../variables/" as *;
+@use "../mixins/" as *;
+@use "../utilities/" as *;
+
+#main-banner {
+  height: 85vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("../img/office.jpg");
+  background-position: center;
+  background-size: cover;
+
+  @include mobile{
+    height: 100vh;
+  }
+
+  nav{
+    @include mobile{
+      display: none;
+    }
+  }
+
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+    padding: 24px 32px;
+    background: $black;
+    z-index: 10;
+
+    @include mobile{
+      padding: 16px;
+    }
+
+    .brand {
+      color: $light-color;
+      font-size: 2rem;
+      height: max-content;
+      @include main-hover;
+    }
+
+    &-navbar {
+      display: flex;
+      align-items: center;
+      height: 100%;
+
+      li {
+        margin: 5px 10px;
+
+        a {
+          color: $light-color;
+          @include main-hover;
+        }
+      }
+    }
+
+    .fas.fa-bars {
+      font-size: 2rem;
+      color: $light-color;
+      display: none;
+
+      @include mobile{
+        display: block;
+      }
+    }
+  }
+
+  .title-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: $light-color;
+
+    @include mobile{
+      text-align: center;
+      padding: 32px;
+    }
+
+    h1{
+      font-size: 4rem;
+      margin-top: 16px;
+      @extend %title-text-shadow;
+    }
+
+    h2{
+      font-size: 3rem;
+      @extend %title-text-shadow;
+    }
+  }
+}
